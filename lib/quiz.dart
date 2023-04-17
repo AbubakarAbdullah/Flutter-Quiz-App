@@ -14,6 +14,8 @@ class Quiz extends StatefulWidget {
   }
 }
 
+//Abubakar
+
 class _QuizState extends State<Quiz> {
   List<String> _selectedAnswers = [];
   var _activeScreen = 'start-screen';
@@ -59,7 +61,7 @@ class _QuizState extends State<Quiz> {
     }
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       home: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
