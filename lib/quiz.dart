@@ -4,6 +4,7 @@ import 'package:quiz_app/start_screen.dart';
 import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/results_screen.dart';
+import 'package:quiz_app/category_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -22,7 +23,7 @@ class _QuizState extends State<Quiz> {
 
   void _switchScreen() {
     setState(() {
-      _activeScreen = 'questions-screen';
+      _activeScreen = 'category-screen';
     });
   }
 
@@ -36,16 +37,26 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  void onStart() {
+    setState(() {
+      _activeScreen = 'questions-screen';
+    });
+  }
+
   void restartQuiz() {
     setState(() {
       _selectedAnswers = [];
-      _activeScreen = 'questions-screen';
+      _activeScreen = 'category-screen';
     });
   }
 
   @override
   Widget build(context) {
     Widget screenWidget = StartScreen(_switchScreen);
+
+    if (_activeScreen == 'category-screen') {
+      screenWidget = CategoryScreen(onStart: onStart);
+    }
 
     if (_activeScreen == 'questions-screen') {
       screenWidget = QuestionsScreen(
